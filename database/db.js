@@ -10,6 +10,6 @@ const PetSchema = mongoose.Schema({
   like: Number
 });
 
-const Pet = mongoose.model('Pet', PetSchema);
+const Pet = mongoose.model('pets', PetSchema);
 
 module.exports = Pet;

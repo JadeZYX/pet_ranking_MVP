@@ -1,37 +1,32 @@
 body {
-  background: radial-gradient(#e9e8ee, #ededf1);
+  background: #E7F6F2;
   width: 100%;
   margin: 0;
   padding: 0;
   font-family: 'Roboto', sans-serif;
 }
 
-form {
-  margin: 12% auto;
-  background-color: #dddde6;
-  border: 3px solid #f1f1f1;
-  width: 380px;
-  height: 390px;
+h1 {
+  text-align: center;
 }
 
-
-input, select {
-  width: 100%;
+/* input, select {
+  width: 50%;
   padding: 12px 20px;
   margin: 8px 0;
   display: inline-block;
   border: 1px solid #ccc;
   box-sizing: border-box;
-}
+} */
 
 button {
-  background-color: #4CAF50;
-  color: white;
+  background-color:#B1BCE6;
   padding: 14px 20px;
   margin: 8px 0;
   border: none;
   cursor: pointer;
-  width: 100%;
+  width:30%;
+  border-radius: 10px;
 }
 
 button:hover {
