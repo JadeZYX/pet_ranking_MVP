@@ -8,16 +8,10 @@ body {
 
 h1 {
   text-align: center;
+  font-family:cursive;
+  margin-top:30px;
+  font-size:5rem;
 }
-
-/* input, select {
-  width: 50%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  box-sizing: border-box;
-} */
 
 button {
   background-color:#B1BCE6;
@@ -32,5 +26,4 @@ button {
 button:hover {
   opacity: 0.8;
 }
-
 

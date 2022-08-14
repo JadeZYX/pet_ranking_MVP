@@ -5,24 +5,17 @@ import ControlledCarousel from './ControlledCarousel.jsx';
 import axios from 'axios';
 import Form from './Form.jsx';
 
+
 export default function App() {
 
   // const {petId} = useParams();
-  //const [selectedStyled, setSelectedStyled]=useState(undefined);//0??
   const [data, setData] = useState([]);
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [isLastPage, setIsLastPage] = useState(false);
   const [page, setPage] = useState(1);
+  const [isFirstPage,setIsFirstpage] = useState(true);
 
-
-  const changeLike = function (index) {
-    setData([
-      ...data.slice(0, index),
-      { ...data[index], ...{ like: data[index].like + 1 } },
-      ...data.slice(index+1)])
-  }
-
-  useEffect(() => {
+  const fetchAll = function(){
     axios({
       url: `/pet`,
       method: 'get',
@@ -40,23 +33,66 @@ export default function App() {
       .catch((err) => {
         console.log('failed getting pets data: ', err);
       });
-    // axios({
-    //   url:`/pet/${petId}`,
-    //   method:'get',
-    // })
-    // .then((response)=>{
-    //   console.log("response for one pet: ",response),
-    //   setSelectedStyled(response.data);
-    // })
-    // .catch((err)=>{
-    //   console.log('failed getting styled pet: ', err);
-    // });
-  }, {});
+  }
 
-  //every time just show 8 items, how to check equal to 8?
+  const changeLike = function (index) {
+    setData([
+      ...data.slice(0, index),
+      { ...data[index], ...{ like: data[index].like + 1 } },
+      ...data.slice(index+1)])
+  }
+
+  useEffect(() => {
+    fetchAll();
+    // axios({
+    //   url: `/pet`,
+    //   method: 'get',
+    //   params: {
+    //     page: page
+    //   }
+    // })
+    //   .then((response) => {
+    //     console.log('response for all pet: ', response.data);
+    //     if (response.data.length <= 8) {
+    //       setIsLastPage(true);
+    //     }
+    //     setData(response.data.slice(0, 9));
+    //   })
+    //   .catch((err) => {
+    //     console.log('failed getting pets data: ', err);
+    //   });
+  }, [page]);
+
+
   const handleLoadMore = function () {
     setPage(page + 1);
-    // axios.
+    fetchAll();
+  }
+
+  const handlePreviousPage = function(){
+    setPage(page-1);
+    if(page===1){
+      setIsFirstpage(true);
+    }
+    if(!isFirstPage){
+      axios({
+        url: `/pet`,
+        method: 'get',
+        params: {
+          page: page
+        }
+      })
+        .then((response) => {
+          console.log('response for all pet: ', response.data);
+          if (response.data.length <= 8) {
+            setIsLastPage(true);
+          }
+          setData(response.data.slice(0, 9));
+        })
+        .catch((err) => {
+          console.log('failed getting pets data: ', err);
+        });
+    }
   }
 
 
@@ -68,9 +104,12 @@ export default function App() {
       </div>
       {data.slice(0, 4) && <GridCard data={data.slice(0, 4)} indexOffset={0} setSelectedIndex={setSelectedIndex} changeLike={changeLike}/>}
       {data.slice(4, data.length - 1) && <GridCard data={data.slice(4, data.length - 1)} indexOffset={4} setSelectedIndex={setSelectedIndex} changeLike={changeLike} />}
+      <div>
       {isLastPage ? null : (
         <button type="button" onClick={() => handleLoadMore()}>Next Page</button>
       )}
+      <span style={{marginLeft:'122px'}}>{isFirstPage ? null: <button onClick={handlePreviousPage}>Previous Page</button> }</span>
+      </div>
       <Form />
     </div>
   )

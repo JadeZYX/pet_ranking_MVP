@@ -13,14 +13,12 @@ function ControlledCarousel({singleData}) {
   const photos = singleData.images_id;
 
   return (
-    <div style={{margin:'120px'}}>
+    <div style={{margin:'60px'}}>
       <Carousel  activeIndex={index} onSelect={handleSelect}>>
         {photos.length>0 && photos.map((ele,index)=>(
         <Carousel.Item  key={index}>
-          <img style={{height:'500px',width:'100px',objectFit:"cover"}}src={ele} alt="slider" className="d-block w-100"/>
+          <img style={{height:'500px',width:'300px',objectFit:"cover"}}src={ele} alt="slider" className="d-block w-100"/>
           <Carousel.Caption>
-          <h3>Second slide label</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
         </Carousel.Caption>
         </Carousel.Item>))}
       </Carousel>

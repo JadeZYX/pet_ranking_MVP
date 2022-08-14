@@ -1,7 +1,6 @@
 import React,{useState} from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
-//require('dotenv').config();
 
 const Container = styled('div')`
   background-color: #F5EDDC;
@@ -91,8 +90,9 @@ export default function Form(){
       <button type = "button" onClick={()=>setShowModal(true)}>Share your favourite pet ? </button>
       {showModal && (<Container>
         <button type="button" onClick={()=>setShowModal(false)}>Go Back</button>
-        <h1>Pet Information</h1>
-        <form onSubmit={(event)=>handleSubmitForm(event)}>
+        <div>
+        <h1 style={{marginRight:'300px'}}>Pet Information</h1>
+        <form style={{margin:'0 300px'}}onSubmit={(event)=>handleSubmitForm(event)}>
           <label>Category</label>
           <select required onChange={(event)=>setCategory(event.target.value)}>
             <option value = "">--Please choose an option--</option>
@@ -102,24 +102,30 @@ export default function Form(){
             <option value = "Rabbit">Rabbit</option>
             <option value = "Parrot">Parrot</option>
           </select>
+          <br />
           <label>Nickname
             <input maxLength={20} onChange={(event)=>setNickname(event.target.value)} required />
           </label>
+          <br />
           <label>Age
             <input onChange={(event)=>setAge(event.target.value)} />
           </label>
+          <br />
           <label>Location
             <input maxLength={30} onChange={(event)=>setLocation(event.target.value)} />
           </label>
+          <br />
           <label>Addiction
             <input maxLength={100} onChange={(event)=>setAddiction(event.target.value)} />
           </label>
+          <br />
           <label>Select photos (Limit 6)
             <input type="file" accept="image/*" multiple="multiple" onChange={(event)=>handlePhotosChange(event)} required />
             <button type="button" onClick={(event)=>handlePhotosUpload(event,photosUploadFile)}> UPLOAD </button>
           </label>
           <Input type="submit" required />
         </form>
+        </div>
       </Container>)}
     </div>
   )
