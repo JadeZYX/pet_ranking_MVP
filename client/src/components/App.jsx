@@ -15,13 +15,14 @@ export default function App() {
   const [page, setPage] = useState(1);
   const [isFirstPage,setIsFirstpage] = useState(true);
 
-  const fetchAll = function(){
+  const fetchAll = function(temPage){
+   temPage = temPage||1;
     axios({
-      url: `/pet`,
-      method: 'get',
-      params: {
-        page: page
-      }
+      url: `/pet/${temPage}`,
+      method: 'get'
+      // params: {
+      //   page: temPage
+      // }
     })
       .then((response) => {
         console.log('response for all pet: ', response.data);
@@ -61,12 +62,13 @@ export default function App() {
     //   .catch((err) => {
     //     console.log('failed getting pets data: ', err);
     //   });
-  }, [page]);
+  }, []);
 
 
   const handleLoadMore = function () {
     setPage(page + 1);
-    fetchAll();
+    setIsFirstpage(false);
+    fetchAll(page+1);
   }
 
   const handlePreviousPage = function(){
@@ -75,23 +77,7 @@ export default function App() {
       setIsFirstpage(true);
     }
     if(!isFirstPage){
-      axios({
-        url: `/pet`,
-        method: 'get',
-        params: {
-          page: page
-        }
-      })
-        .then((response) => {
-          console.log('response for all pet: ', response.data);
-          if (response.data.length <= 8) {
-            setIsLastPage(true);
-          }
-          setData(response.data.slice(0, 9));
-        })
-        .catch((err) => {
-          console.log('failed getting pets data: ', err);
-        });
+     fetchAll(page-1);
     }
   }
 

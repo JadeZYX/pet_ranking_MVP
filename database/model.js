@@ -2,6 +2,7 @@ const Pet = require("./db.js");
 //console.log("show Pet in model.js: ", Pet);
 
 exports.getAll=(page,callback)=>{
+  console.log(page);
   Pet.find({}).sort('-like').skip(8*(page-1)).limit(9)
   //Pet.find({})
   .then((data)=>callback(null,data))
