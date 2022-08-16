@@ -79,6 +79,7 @@ export default function App() {
     if(!isFirstPage){
      fetchAll(page-1);
     }
+    setIsLastPage(false);
   }
 
 

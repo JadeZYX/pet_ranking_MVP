@@ -59,7 +59,8 @@ export default function Form(){
         );
       }
       Promise.all(promisesUpload)
-        .then(() => { setPhotosUrl(url), alert("Upload successfully")});
+        .then(() => {
+          setPhotosUrl(url),alert("Upload successfully")});
     } else {
       alert('Maxium 6 photos please');
     }
@@ -82,7 +83,9 @@ export default function Form(){
   const handleSubmitForm = function(event){
     event.preventDefault(event);
     axios(option)
-    .then((newdata)=>console.log(newdata))
+    .then((newdata)=>{
+      alert('Thanks for sharing');
+      console.log(newdata)})
     .catch((err)=>console.log(err));
   }
   return (

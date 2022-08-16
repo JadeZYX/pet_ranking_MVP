@@ -20,7 +20,7 @@ app.get('/pet/:page',(req,res)=>{
 
 app.put('/pet/:id',model.updateLike);
 
-app.post('/pet',model.addPet);
+app.post('/api/pet',model.addPet);
 
 app.use(express.static(__dirname + '/../client/dist'));
 
