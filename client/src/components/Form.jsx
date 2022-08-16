@@ -60,7 +60,14 @@ export default function Form(){
       }
       Promise.all(promisesUpload)
         .then(() => {
-          setPhotosUrl(url),alert("Upload successfully")});
+          setPhotosUrl(url);
+          if(photosUrl.length){
+            alert("Upload successfully");
+          }
+          else{
+            alert("Upload your photos please");
+          }
+        });
     } else {
       alert('Maxium 6 photos please');
     }
