@@ -9,6 +9,10 @@ Configure layout to support the whole page using carousel and grid card from Rea
 ## Demo Video
 
 
+https://user-images.githubusercontent.com/87592168/193468971-71be6996-8b5e-4000-b33c-c3d88b3b84f7.mp4
+
+
+
 ## Installation
 Navigate to the root directory and run the following commands in terminal
 ```npm
