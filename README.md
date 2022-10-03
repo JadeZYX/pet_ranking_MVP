@@ -3,14 +3,13 @@ Simple entertainment application.
 Implement the website from fronted to backend.  
 Configure layout to support the whole page using carousel and grid card from React-Bootstrap.   
 ## Table of Contents
-1. [Demo Video](#demo-video)
+1. [Demo](#demo)
 2. [Installation](#installation)
 3. [Tech-Stack](#tech-stack)
-## Demo Video
+## Demo 
+![pet-ranking-1](https://user-images.githubusercontent.com/87592168/193510389-35f6544c-205c-471e-b7e0-2c01a361c7a6.gif)
 
-
-https://user-images.githubusercontent.com/87592168/193468971-71be6996-8b5e-4000-b33c-c3d88b3b84f7.mp4
-
+![pet-ranking-2](https://user-images.githubusercontent.com/87592168/193510441-eabeab8c-4bf1-47b2-9717-62a4b0ab6777.gif)
 
 
 ## Installation
